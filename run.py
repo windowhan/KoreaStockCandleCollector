@@ -38,6 +38,7 @@ class RunCrawling:
         key_arr = self.mongo_conn["candle_db"].collection_names()
         while content_length!=0:
             headers = {"Authorization" : "Bearer " + self.getToken(api_id, api_pw)}
+            // 대충 종목 받아오는 
             req2 = requests.get("http://192.168.229.1:898/api/stockcode/?page=" + str(page_num), headers=headers)
             json_data = json.loads(req2.text)
             content_length = len(json_data["results"])
